@@ -1,0 +1,76 @@
+.wrapper {
+    background-color: #ABABAB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.tooth {
+    transform: scale( 20 );
+    opacity: 0;
+    animation: scale .5s ease-out forwards;
+    
+    &__crown {
+        //opacity: 0;
+        transform-origin: 50% 50%;
+        transform: translateY( 100% ) scale( 0 );
+        animation: move 1s 1s ease forwards;
+    }
+    
+    &__leg {
+        visibility: hidden;
+        transform-origin: 25% 0;
+        transform: scaleY( .4 );
+        opacity: .1;
+        animation: scalelegs .5s 1.65s ease-out forwards;
+    }
+    
+    &__line {
+        animation: draw 3s 3s ease-out forwards;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+    }
+}
+
+@keyframes scale {
+    0%   { opacity: 0; }
+    25%  { opacity: 0; }
+    100% { 
+        opacity: 1;
+        transform: scale( 1 ); 
+    }
+}
+
+@keyframes scalelegs {
+    75%  { 
+        visibility: visible; 
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1;
+        transform: scale( 1 );
+        visibility: visible;
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateY( 100% ) scale( 0 );
+    }
+    100% { 
+        //opacity: 1; 
+        transform: translateY( 0 ) scale( 1 );
+    }
+}
+
+@keyframes draw {
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes fade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
